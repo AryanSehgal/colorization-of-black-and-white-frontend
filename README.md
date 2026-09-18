@@ -25,7 +25,7 @@ Chroma brings a familiar photo workflow to machine-learning colorization: upload
 
 This repository contains the React frontend. Its companion FastAPI backend runs a pretrained model on its own server. **No third-party AI inference API is used.**
 
-![Chroma studio showing a black-and-white coffee photo alongside its colorized result](docs/images/chroma-studio.png)
+<img width="2522" height="3328" alt="colorization-of-black-and-white-fro vercel app" src="https://github.com/user-attachments/assets/1c30072e-b049-4e24-8eb1-33b2626aa023" />
 
 *The deployed studio, featuring a before-and-after comparison of the built-in coffee sample.*
 
@@ -93,3 +93,50 @@ Use the backend origin without `/api` at the end. Restart Vite after changing th
 ## Deploy on Vercel
 
 Import this repository and use:
+
+| Setting | Value |
+| --- | --- |
+| Framework preset | Vite |
+| Root directory | Repository root |
+| Install command | `npm ci` |
+| Build command | `npm run build` |
+| Output directory | `dist` |
+| Environment variable | `VITE_API_BASE_URL=https://colorization-of-black-and-white-backend.onrender.com` |
+
+Vite embeds this environment variable at build time: **redeploy after changing it**. On the backend, set `ALLOWED_ORIGINS` to your exact Vercel production origin. Additional preview origins must also be explicitly allowed.
+
+See [DEPLOYMENT.md](DEPLOYMENT.md) for the full split-deployment guide.
+
+## Project map
+
+```text
+src/                    React UI, API URL helper, styles, and tests
+public/samples/         Bundled grayscale sample photographs
+docs/images/            README screenshot
+vite.config.ts          Vite configuration and local API proxy
+vercel.json             Vercel build configuration
+THIRD_PARTY_NOTICES.md   Sample-image and dependency credits
+```
+
+## Photos, availability, and limits
+
+Photos are uploaded to the backend for processing; inference does not happen in your browser. The application does not maintain a saved photo library. Download any results you want to keep before refreshing or leaving the page.
+
+The free backend may need time to wake up. A successful health check means the model is loaded, but inference still depends on available server resources. Photo dimensions and result resolution are controlled by the backend's configured limits.
+
+## Credits
+
+Created by **[Aryan Sehgal](https://github.com/AryanSehgal)**.
+
+Colorization is powered by **[Colorful Image Colorization](https://richzhang.github.io/colorization/)** by Richard Zhang, Phillip Isola, and Alexei A. Efros (ECCV 2016).
+
+The bundled samples credit NASA, Rachel Michetti, and SpaceX. See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for source and license details. Dependencies and model assets retain their upstream licenses; no project-wide license is granted by this README.
+
+---
+
+<div align="center">
+
+**A little color. A new perspective.**
+
+[Live studio](https://colorization-of-black-and-white-fro.vercel.app/) · [Frontend](https://github.com/AryanSehgal/colorization-of-black-and-white-frontend) · [Backend](https://github.com/AryanSehgal/colorization-of-black-and-white-backend)
+
