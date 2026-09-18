@@ -399,13 +399,12 @@ input[type="range"] {
   gap: 10px;
   padding: 13px 10px;
   font-size: 12px;
+  line-height: 1.4;
+  text-align: center;
   box-shadow: 0 3px 6px #25462f12;
 }
-.primary-button svg:last-child {
-  margin-left: auto;
-}
-.primary-button svg:first-child {
-  margin-right: auto;
+.primary-button > svg {
+  flex-shrink: 0;
 }
 .primary-button:disabled {
   opacity: 0.55;
